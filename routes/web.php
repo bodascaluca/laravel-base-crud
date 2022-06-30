@@ -16,3 +16,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+// Primo argomento - come nome della tabella (in plurale)
+// Nome del controller come Model (in singolare)
+Route::resource('Comics', 'ComicController');
