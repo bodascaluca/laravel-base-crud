@@ -1,21 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-    
+@extends('layouts.app')
+
+@section('main_content')
     <h1>Lista dei fumetti </h1>
     <ul>
         @foreach ($comics_list as $comic)
             <li>
                 <h3> {{ $comic->title}} </h3>
+                <img src="{{ $comic->thumb}} " alt="">
+
             </li>
         @endforeach
     </ul>
-   
-</body>
-</html>
+@endsection
+
+ 
