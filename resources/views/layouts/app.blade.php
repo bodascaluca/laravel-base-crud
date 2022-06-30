@@ -23,6 +23,11 @@
                 <li>
                     <a class="nav-item nav-link" href="{{ route('Comics.index')}}">Comics List</a>
                 </li>
+
+                <li>
+                    <a class="nav-item nav-link" href="{{ route('Comics.create')}}">Aggiungi un nuvo comic</a>
+                </li>
+                
               </ul>
             </div>
         </nav>

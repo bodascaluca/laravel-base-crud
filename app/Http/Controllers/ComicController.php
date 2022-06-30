@@ -25,7 +25,8 @@ class ComicController extends Controller
      */
     public function create()
     {
-        //
+        // dd('creazione pasta');
+        return view('comic.create');
     }
 
     /**
@@ -36,7 +37,21 @@ class ComicController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Salvare i dati nel data base
+        $data = $request->all();
+        // dd($data);  
+        $new_comic = new Comics();
+        $new_comic->fill($data);
+        // $new_comic->title = $data['title'];
+        // $new_comic->thumb = $data['thumb'];
+        // $new_comic->series = $data['series'];
+        // $new_comic->price = $data['price'];
+        // $new_comic->sale_date = $data['sale_date'];
+        // $new_comic->description = $data['description'];
+        // $new_comic->save();
+        dd('pasta salvata');
+         // Reindirizzo sulla rotta che mostra i dettagli di pasta salvata
+         return redirect()->route('comic.show', ['Comic' => $new_comic->id]);
     }
 
     /**
@@ -47,7 +62,10 @@ class ComicController extends Controller
      */
     public function show($id)
     {
-        return view('Comic.show');
+        // dd($id);
+        $comics = Comics::find($id);
+        // dd($selected_comics);
+        return view('Comic.show', compact('comics'));
     }
 
     /**
