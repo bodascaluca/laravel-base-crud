@@ -34,6 +34,11 @@
             </div>
 
             <div class="mb-3">
+                <label for="type">Tipo</label>
+                <input type="text" class="form-control" id="type" name="type" placeholder="Tipo">
+            </div>
+
+            <div class="mb-3">
                 <label for="description">Descrizione</label>
                 <textarea type="text" class="form-control" id="description" name="description" placeholder="Descrizione"></textarea>
             </div>

@@ -48,10 +48,10 @@ class ComicController extends Controller
         // $new_comic->price = $data['price'];
         // $new_comic->sale_date = $data['sale_date'];
         // $new_comic->description = $data['description'];
-        // $new_comic->save();
-        dd('pasta salvata');
+        $new_comic->save();
+        // dd('pasta salvata');
          // Reindirizzo sulla rotta che mostra i dettagli di pasta salvata
-         return redirect()->route('comic.show', ['Comic' => $new_comic->id]);
+         return redirect()->route('Comics.show', ['Comic' => $new_comic->id]);
     }
 
     /**
