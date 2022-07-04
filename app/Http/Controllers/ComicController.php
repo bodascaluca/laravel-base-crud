@@ -39,15 +39,7 @@ class ComicController extends Controller
     {
 
         // <Controllo i dati 
-         $request->validate([ 
-            'title'=>'required|max:100|min:5',
-            'description'=>'required',
-            'thumb'=>'required',
-            'price'=>'required',
-            'series'=>'required|max:100|min:5',
-            'sale_date'=>'required',
-            'type'=>'required|max:100|min:5',
-         ]);
+         $request->validate($this->getvalidationRules());
 
         // Salvare i dati nel data base
         $data = $request->all();
@@ -102,7 +94,18 @@ class ComicController extends Controller
      */
     public function update(Request $request, $id)
     {
-        dd('update');
+        // Validazione dei dati
+        $request->validate($this->getvalidationRules());
+
+         //Salvataggio dei dati
+        $data = $request->all();
+        // dd($data);
+        $comic_to_update = Comics::findOrFail($id); // comic_to_update essendo scope potrebbe essere anche comic
+        $comic_to_update->update($data);
+
+        // dd('comic_to_update');
+
+        return redirect()->route('Comics.show', ['Comic'=> $comic_to_update->id] );
     }
 
     /**
@@ -113,6 +116,26 @@ class ComicController extends Controller
      */
     public function destroy($id)
     {
-        //
+        // dd('destroy');
+        $comic = Comics::findOrFail($id);
+        $comic->delete();
+        // dd($comic);
+        return redirect()->route('Comics.index');
+    }
+
+    //** 
+    /* Return an array with validation rules
+    @ return Array 
+    */
+    private function getvalidationRules(){
+       return  [ 
+        'title'=>'required|max:100|min:5',
+        'description'=>'required',
+        'thumb'=>'required',
+        'price'=>'required',
+        'series'=>'required|max:100|min:5',
+        'sale_date'=>'required',
+        'type'=>'required|max:100|min:5',
+       ];
     }
 }
