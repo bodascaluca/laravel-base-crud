@@ -6,6 +6,8 @@
         {{-- {{ dd($comics)}} --}}
         <h3> {{ $comics->title}} </h3>
         <img src="{{ $comics->thumb}} " alt="">
-        <p>{{ $comics->description }}</p>
+        <p class="mb-4">{{ $comics->description }}</p>
+
+        <a class="btn btn-primary" href="{{ route('Comics.edit', ['Comic'=>$comics->id])}}">Modifica</a>
     </div>
-@endsection
+@endsection 
